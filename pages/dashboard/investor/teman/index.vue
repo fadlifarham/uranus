@@ -19,13 +19,13 @@
             </div>
             <div class="tabs is-centered is-boxed is-fullwidth">
               <ul>
-                <li class="is-active">
+                <li v-bind:class="[isActive ? activeClass : '', errorClass]" v-on:click="changeTab">
                   <a>
                     <span class="icon is-small"><i class="fas fa-user" aria-hidden="true"></i></span>
                     <span>Cari Teman</span>
                   </a>
                 </li>
-                <li>
+                <li v-bind:class="[isActive ? '' : activeClass, errorClass]" v-on:click="changeTab">
                   <a>
                     <span class="icon is-small"><i class="fas fa-user-friends" aria-hidden="true"></i></span>
                     <span>Teman Saya</span>
@@ -173,11 +173,21 @@
   export default {
     data() {
       return {
+        isActive: true,
+        activeClass: 'is-active',
+        errorClass: ''
       }
     },
     mounted() {
     },
     methods: {
+      changeTab() {
+        if (this.isActive) {
+          this.isActive = false;
+        } else {
+          this.isActive = true;
+        }
+      }
     },
   }
 </script>

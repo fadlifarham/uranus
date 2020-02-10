@@ -21,9 +21,12 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end" v-if="this.user.role !== 'IV'">
+          <div class="navbar-end" v-if="this.user.role == 'IV'">
             <a class="navbar-item" href="/dashboard">
               Dashboard
+            </a>
+            <a class="navbar-item" href="/dashboard/investor/teman">
+              Teman
             </a>
             <a class="navbar-item" href="/dashboard/investor/investasiku/proyek">
               Proyek Investasiku
@@ -112,7 +115,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$auth.logout() 
+      this.$auth.logout()
     }
   }
 }
