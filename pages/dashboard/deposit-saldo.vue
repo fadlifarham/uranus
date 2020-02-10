@@ -167,7 +167,7 @@
 
 <script>
   export default {
-    name: "deposit saldo",
+    // name: "deposit saldo",
     data() {
       return {
         amount: 0,
