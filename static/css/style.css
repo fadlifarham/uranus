@@ -169,7 +169,7 @@
     min-height: 100vh;
 }
 .modal-background {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4 !important;
 }
 .modal-content {
     width: 100%;
@@ -178,7 +178,7 @@
 }
 
 .modal-close {
-    background-color: red;
+    background-color: red !important;
 }
 
 .modal-img-produk {

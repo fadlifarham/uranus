@@ -139,7 +139,7 @@
               <div class="modal-background"></div>
               <div class="modal-card">
                 <section class="modal-card-body">
-                  <div class="box">
+                  <div>
                     <p class="subtitle">Masukan Jumlah Investasi</p>
                     <div class="columns">
                       <div class="column is-6">

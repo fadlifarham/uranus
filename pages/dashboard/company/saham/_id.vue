@@ -76,6 +76,90 @@
                 </div>
               </div>
             </div>
+
+            <div class="box">
+              <div class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Laporan Dividen</strong><br>
+                    </p>
+                    <p>
+                      <button class="button is-primary is-rounded" v-on:click="modalFormTambahLaporan = true">Tambah Laporan</button>
+                    </p>
+                    <table class="table is-fullwidth">
+                      <tr>
+                        <td>Waktu</td>
+                        <td>Informasi</td>
+                      </tr>
+                      <tr>
+                        <td>21-03-2020</td>
+                        <td>Memulai aktifitas pengeboran.</td>
+                      </tr>
+                      <tr>
+                        <td>21-02-2020</td>
+                        <td>Pembangunan kebutuhan dan pemasangan alat.</td>
+                      </tr>
+                      <tr>
+                        <td>21-01-2020</td>
+                        <td>Pembebasan tanah sudah dilakukan.</td>
+                      </tr>
+                      <tr>
+                        <td>11-01-2020</td>
+                        <td>Proyek sudah mulai dikerjakan.</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="modalFormTambahLaporan" class="modal is-active">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <section class="modal-card-body">
+                  <div>
+                    <p class="subtitle">Masukan Jumlah Investasi</p>
+                    <div class="columns">
+                      <div class="column is-6">
+                        <div class="field">
+                          <label>Jumlah Uang</label>
+                          <p class="control has-icons-left">
+                            <input class="input" type="number" placeholder="Dalam Rupiah">
+                            <span class="icon is-small is-left">
+                                  <i class="fas fa-money-bill"></i>
+                                </span>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="column is-6">
+                        <div class="field">
+                          <label>Metode Pembayaran</label>
+                          <div class="control has-icons-left">
+                            <div class="select is-fullwidth">
+                              <select>
+                                <option selected>Saldo Uranus</option>
+                              </select>
+                            </div>
+                            <div class="icon is-small is-left">
+                              <i class="fas fa-money-check"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <div class="control">
+                        <a href="" class="button is-primary is-fullwidth">Mulai Investasi</a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <button v-on:click="modalFormTambahLaporan = false" class="modal-close is-large" aria-label="close"></button>
+            </div>
+
             <div class="box">
               <p>
                 <strong>Dana Terkumpul</strong><br>

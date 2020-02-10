@@ -25,6 +25,9 @@
             <a class="navbar-item" href="/dashboard">
               Dashboard
             </a>
+            <a class="navbar-item" href="/dashboard/investor/teman">
+              Teman
+            </a>
             <a class="navbar-item" href="/dashboard/investor/investasiku/proyek">
               Proyek Investasiku
             </a>
@@ -112,7 +115,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$auth.logout() 
+      this.$auth.logout()
     }
   }
 }

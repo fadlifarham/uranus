@@ -20,13 +20,13 @@
                         <a class="navbar-item" href="/produk">
                             Produk
                         </a>
-                        <a class="navbar-item" href="/">
-                            Cara Investasi
+                        <a class="navbar-item" href="/cara-kerja">
+                            Cara Kerja
                         </a>
-                        <a class="navbar-item" href="/">
+                        <a class="navbar-item" href="/tim-kami">
                             Tim Kami
                         </a>
-                        <a class="navbar-item" href="/">
+                        <a class="navbar-item" href="/tentang-kami">
                             Tentang Kami
                         </a>
                         <div v-if="!this.$auth.loggedIn" class="navbar-item">
@@ -70,9 +70,9 @@
                     </div>
                     <div class="column is-2 is-offset-1">
                         <ul class="footer-menu">
-                            <li><a href="">Tentang Kami</a></li>
+                            <li><a href="/tentang-kami">Tentang Kami</a></li>
                             <li><a href="/produk">Produk</a></li>
-                            <li><a href="">Tim Kami</a></li>
+                            <li><a href="/tim-kami">Tim Kami</a></li>
                         </ul>
                     </div>
                     <div class="column is-2">
@@ -85,7 +85,8 @@
                         <h4 class="title is-5 has-text-weight-bold has-text-white">Unduh</h4>
                         <div class="columns">
                             <div class="column is-6">
-                              <a href="https://imgbb.com/"><img src="https://i.ibb.co/nMQvHR6/603e52db090253e5e84d75668ef9c6c3.png" alt="603e52db090253e5e84d75668ef9c6c3" border="0"></a>
+                              <p class="has-text-white">Coming Soon *^_^*</p>
+<!--                              <a href="https://imgbb.com/"><img src="https://i.ibb.co/nMQvHR6/603e52db090253e5e84d75668ef9c6c3.png" alt="603e52db090253e5e84d75668ef9c6c3" border="0"></a>-->
                             </div>
                         </div>
                     </div>
