@@ -100,6 +100,9 @@ export default {
             })
             // console.log("jalan");
             // this.$router.push('/dashboard')
+        }).catch(error => {
+            alert(error)
+            console.log(error)
         })
       }
     }
