@@ -65,7 +65,7 @@
                 <div class="column is-6">
                     <div class="">
                         
-                            <div v-for="item in 5" :key="item" class="box">
+                            <div v-for="item in companies" :key="item.id" class="box">
                                 <div class="media">
                                     <div class="media-left">
                                         <figure class="image is-64x64">
@@ -75,11 +75,11 @@
                                     <div class="media-content">
                                         <div class="content">
                                             <p>
-                                                <a :href="'/dashboard/saham/' + item" class="has-text-weight-bold has-text-black">Soto Lamongan Cak Mamet</a>
+                                                <a :href="'/dashboard/investor/saham/' + item.id" class="has-text-weight-bold has-text-black">{{ item.name }}</a>
                                                 <br>
-                                                Dibutuhkan Rp 512.000.000 - Imbal Balik 2%
+                                                {{ subString(item.description) }}
                                                 <br>
-                                                <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span>
+                                                <!-- <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span> -->
                                             </p>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
 
                         <div class="field">
                             <div class="control">
-                                <a href="/dashboard/saham" class="button is-primary is-fullwidth">Selanjutnya</a>
+                                <a href="/dashboard/investor/saham" class="button is-primary is-fullwidth">Selanjutnya</a>
                             </div>
                         </div>
                     </div>
@@ -105,3 +105,40 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+  data() {
+		return {
+			companies: []	
+		}
+	},
+
+	mounted() {
+		this.getAllCompanies()
+	},
+
+	methods: {
+		subString(dataString) {
+			var data, lengthString;
+			lengthString = 100
+			if (dataString == undefined) {
+					return dataString
+			}
+
+			if (dataString.length < lengthString) {
+					data = dataString
+			} else {
+					data = dataString.substr(1, lengthString)
+			}
+			return data;
+		},
+
+		getAllCompanies() {
+			this.$axios.get('/core/companies/?ordering=-created_at').then(response => {
+				this.companies = response.data.results
+			})
+		}
+	},
+}
+</script>

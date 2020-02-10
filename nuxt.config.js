@@ -73,8 +73,12 @@ export default {
       symbolPosition: 'front',
       symbolSpacing: true
     }],
-    
+    '@nuxtjs/moment'
   ],
+
+  moment: {
+    locales: ['id']
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
