@@ -8,7 +8,7 @@
                             <div class="column is-2 has-text-centered is-horizontal-center">
                                 <div class='is-flex is-horizontal-center'>
                                     <figure class="image is-64x64 has-text-centered">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                        <img class="is-rounded" :src="user.image ? user.image : 'https://bulma.io/images/placeholders/128x128.png'">
                                     </figure>
                                 </div>
                             </div>
@@ -18,7 +18,7 @@
                                 </p>
                                 <p>Saldo Anda</p>
                                 <p class="subtitle">
-                                    Rp 8.032.032
+                                  {{ user.balance | currency }}
                                 </p>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="box">
                         <h3 class="subtitle is-4">Proyek Terbaru</h3>
-                        
+
                             <div v-for="item in proyeks" :key="item.id" class="notification">
                                 <a :href="'/dashboard/investor/investasiku/proyek/' + item.id">
                                     <span class="has-text-weight-bold">{{ item.name }}</span>
@@ -68,7 +68,7 @@
                                 <br>
                                 <span class="has-text-weight-light">{{ item.company.name }} - Sampai 23 Juni 2019</span>
                             </div>
-                        
+
                         <div class="field">
                             <div class="control">
                                 <a href="/dashboard/investor/investasiku/proyek" class="button is-primary is-fullwidth">Lihat Semua</a>
@@ -78,7 +78,7 @@
 
                     <div class="box">
                         <h3 class="subtitle is-4">Saham Terbaru</h3>
-                        
+
                             <div v-for="item in companies" :key="item.id" class="notification">
                                 <a :href="'/dashboard/investor/investasiku/saham/' + item.id">
                                     <span class="has-text-weight-bold">{{ item.name }}</span>
@@ -88,7 +88,7 @@
                                 <br>
                                 <!-- <span class="has-text-weight-light">Perusahaan PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span> -->
                             </div>
-                        
+
 
                         <div class="field">
                             <div class="control">

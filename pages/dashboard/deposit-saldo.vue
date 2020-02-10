@@ -9,45 +9,18 @@
                 <div class="column is-2 has-text-centered is-horizontal-center">
                   <div class='is-flex is-horizontal-center'>
                     <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      <img class="is-rounded" :src="user.image ? user.image : 'https://bulma.io/images/placeholders/128x128.png'">
                     </figure>
                   </div>
                 </div>
                 <div class="column is-10">
                   <p class="subtitle">
-                    Halo, Fatkul Nur Koirudin
+                    Halo, {{ user.firstName }} {{ user.lastName }}
                   </p>
                   <p>Saldo Anda</p>
                   <p class="subtitle">
-                    Rp 8.032.032
+                    {{ user.balance | currency }}
                   </p>
-                </div>
-              </div>
-              <div class="columns">
-                <div class="column">
-                  <div class="field">
-                    <div class="control">
-                      <a href="/dashboard/tarik-saldo"
-                         class="button is-primary is-fullwidth">
-                                          <span class="icon">
-                                              <i class="fas fa-coins"></i>
-                                          </span>
-                        <span>Tarik Saldo</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="column">
-                  <div class="field">
-                    <div class="control">
-                      <a href="/dashboard/deposit-saldo" class="button is-primary is-fullwidth">
-                      <span class="icon">
-                                              <i class="fas fa-money-check-alt"></i>
-                                          </span>
-                        <span>Deposit Saldo</span>
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -170,11 +143,15 @@
     // name: "deposit saldo",
     data() {
       return {
+        user: '',
         amount: 0,
         showBankForm: false,
         bankPaymentInformation: { brivaNo:'', customerCode: '', amount: ''},
         showWarningNominal: false,
       }
+    },
+    mounted() {
+      this.user = this.$auth.user
     },
     methods: {
      showPaymentInformation() {

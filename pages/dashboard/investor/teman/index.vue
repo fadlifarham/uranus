@@ -10,10 +10,10 @@
               <label class="label">Pencarian Teman</label>
               <div class="columns">
                 <div class="column is-8">
-                  <input type="text" class="input">
+                  <input type="text" class="input" v-model="searchQuery">
                 </div>
                 <div class="column is-4">
-                  <button class="button is-primary is-outlined is-fullwidth">Search</button>
+                  <button class="button is-primary is-outlined is-fullwidth" v-on:click="getSearchUser">Search</button>
                 </div>
               </div>
             </div>
@@ -38,8 +38,7 @@
             </div>
 
             <div v-if="isActive">
-
-              <div class="box">
+              <div class="box" v-for="(user, index) in users">
                 <div class="columns">
                   <div class="column is-2 has-text-centered is-horizontal-center">
                     <div class='is-flex is-horizontal-center'>
@@ -49,48 +48,8 @@
                     </div>
                   </div>
                   <div class="column is-7">
-                    <span class="subtitle">Fatkul Nur Koirudin</span>
-                    <br><span>Tinggal di Lamongan</span>
-                  </div>
-                  <div class="column is-3">
-                    <div class="container">
-                      <button class="button is-rounded is-small is-primary">Tambah Teman</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="columns">
-                  <div class="column is-2 has-text-centered is-horizontal-center">
-                    <div class='is-flex is-horizontal-center'>
-                      <figure class="image is-64x64 has-text-centered">
-                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                      </figure>
-                    </div>
-                  </div>
-                  <div class="column is-7">
-                    <span class="subtitle">Fatkul Nur Koirudin</span>
-                    <br><span>Tinggal di Lamongan</span>
-                  </div>
-                  <div class="column is-3">
-                    <div class="container">
-                      <button class="button is-rounded is-small is-primary">Tambah Teman</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="columns">
-                  <div class="column is-2 has-text-centered is-horizontal-center">
-                    <div class='is-flex is-horizontal-center'>
-                      <figure class="image is-64x64 has-text-centered">
-                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                      </figure>
-                    </div>
-                  </div>
-                  <div class="column is-7">
-                    <span class="subtitle">Fatkul Nur Koirudin</span>
-                    <br><span>Tinggal di Lamongan</span>
+                    <span class="subtitle">{{ user.firstName + " " + user.lastName }} </span>
+                    <br><span>@{{ user.username }}</span>
                   </div>
                   <div class="column is-3">
                     <div class="container">
@@ -102,7 +61,7 @@
 
             </div>
             <div v-if="isActive == false">
-              <div class="box">
+              <div class="box" v-for="(user, index) in userFriends">
                 <div class="columns">
                   <div class="column is-2 has-text-centered is-horizontal-center">
                     <div class='is-flex is-horizontal-center'>
@@ -179,10 +138,14 @@
       return {
         isActive: true,
         activeClass: 'is-active',
-        errorClass: ''
+        errorClass: '',
+        users: [],
+        userFriends: [],
+        searchQuery: ''
       }
     },
     mounted() {
+      this.getUsers();
     },
     methods: {
       changeTab() {
@@ -191,6 +154,24 @@
         } else {
           this.isActive = true;
         }
+      },
+      getUsers() {
+        this.$axios.get('/core/users/').then(response => {
+          this.users = response.data.results
+          console.log(this.users)
+        })
+      },
+      getUserFriends() {
+        this.$axios.get('/core/users/').then(response => {
+          this.userFriends = response.data.results
+          console.log(this.userFriends)
+        })
+      },
+      getSearchUser() {
+        this.$axios.get('/core/users/?search=' + this.searchQuery).then(response => {
+          this.users = response.data.results
+          console.log(this.users)
+        })
       }
     },
   }
