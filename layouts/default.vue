@@ -21,31 +21,10 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
+          <div class="navbar-end" v-if="this.user.role !== 'IV'">
             <a class="navbar-item" href="/dashboard">
               Dashboard
             </a>
-            <!-- <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                  User Bisnis
-              </a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                    Semua Proyek Saya
-                </a>
-                <a class="navbar-item">
-                    Buat Proyek Baru
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                    Semua Pendanaan UKM
-                </a>
-                <a class="navbar-item">
-                    Pendanaan UKM
-                </a>
-              </div>
-            </div> -->
-
             <a class="navbar-item" href="/dashboard/investor/investasiku/proyek">
               Proyek Investasiku
             </a>
@@ -73,7 +52,38 @@
             <a class="navbar-item" @click="logout">
               Logout
             </a>
+          </div>
+          <div class="navbar-end" v-else>
 
+            <a class="navbar-item" href="/dashboard/company">
+              Dashboard
+            </a>
+            <a class="navbar-item" href="/dashboard/company/proyek">
+              Semua Proyek Saya
+            </a>
+
+            <a class="navbar-item" href="/dashboard/company/proyek/create">
+              Buat Proyek Baru
+            </a>
+            <a class="navbar-item" href="/dashboard/company/saham">
+              Semua Bursa UKM Saya
+            </a>
+            <a class="navbar-item" href="/dashboard/company/saham/create">
+              Tambah Bursa UKM
+            </a>
+
+            <div class="navbar-item">
+              <a href="/dashboard/profile" class="button is-primary is-rounded is-outlined">
+                <span class="icon">
+                  <i class="far fa-user" />
+                </span>
+                <span>Profile</span>
+              </a>
+            </div>
+
+            <a class="navbar-item" @click="logout">
+              Logout
+            </a>
           </div>
         </div>
       </div>
@@ -91,6 +101,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      user: {}
+    }
+  },
+  mounted() {
+    this.user = this.$auth.user
+    console.log(this.user)
+  },
   methods: {
     logout() {
       this.$auth.logout()
