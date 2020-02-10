@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="section">
       <div class="container">
         <div class="columns">
@@ -122,11 +121,6 @@
                     <td>{{ bankPaymentInformation.amount }}</td>
                   </tr>
                 </table>
-
-
-                <div class="field">
-                  <button class="button is-primary is-fullwidth">Konfirmasi Pembayaran</button>
-                </div>
 
                 <hr>
                 <div class="field">
