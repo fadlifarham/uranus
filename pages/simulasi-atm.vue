@@ -15,16 +15,10 @@
           <div class="box">
             <h3 class="subtitle is-5">Simulasi ATM</h3>
             <div class="columns">
-              <div class="column is-6">
-                <div class="field">
-                  <label>Kode Perusahaan</label>
-                  <input type="number" class="input">
-                </div>
-              </div>
-              <div class="column is-6">
+              <div class="column is-12">
                 <div class="field">
                   <label>Nomor Pembayaran</label>
-                  <input type="number" class="input">
+                  <input type="number" class="input" v-model="kodePembayaran">
                 </div>
               </div>
             </div>
@@ -77,6 +71,8 @@
       return {
         showPaymentSection: false,
         showNotificationSection: false,
+        kodePembayaran: 0,
+        amount: 0
       }
     },
     methods: {

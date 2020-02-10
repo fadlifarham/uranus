@@ -36,85 +36,89 @@
             <div class="notification is-success">
               <p>Permintaan pertemanan berhasil di tambahkan.</p>
             </div>
-            <div class="box">
-              <div class="columns">
-                <div class="column is-2 has-text-centered is-horizontal-center">
-                  <div class='is-flex is-horizontal-center'>
-                    <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                    </figure>
+
+            <div v-if="isActive">
+
+              <div class="box">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered is-horizontal-center">
+                    <div class='is-flex is-horizontal-center'>
+                      <figure class="image is-64x64 has-text-centered">
+                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      </figure>
+                    </div>
                   </div>
-                </div>
-                <div class="column is-7">
-                  <span class="subtitle">Fatkul Nur Koirudin</span>
-                  <br><span>Tinggal di Lamongan</span>
-                </div>
-                <div class="column is-3">
-                  <div class="container">
-                    <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                  <div class="column is-7">
+                    <span class="subtitle">Fatkul Nur Koirudin</span>
+                    <br><span>Tinggal di Lamongan</span>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="columns">
-                <div class="column is-2 has-text-centered is-horizontal-center">
-                  <div class='is-flex is-horizontal-center'>
-                    <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                    </figure>
-                  </div>
-                </div>
-                <div class="column is-7">
-                  <span class="subtitle">Fatkul Nur Koirudin</span>
-                  <br><span>Tinggal di Lamongan</span>
-                </div>
-                <div class="column is-3">
-                  <div class="container">
-                    <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                  <div class="column is-3">
+                    <div class="container">
+                      <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="box">
-              <div class="columns">
-                <div class="column is-2 has-text-centered is-horizontal-center">
-                  <div class='is-flex is-horizontal-center'>
-                    <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                    </figure>
+              <div class="box">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered is-horizontal-center">
+                    <div class='is-flex is-horizontal-center'>
+                      <figure class="image is-64x64 has-text-centered">
+                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      </figure>
+                    </div>
                   </div>
-                </div>
-                <div class="column is-7">
-                  <span class="subtitle">Fatkul Nur Koirudin</span>
-                  <br><span>Tinggal di Lamongan</span>
-                </div>
-                <div class="column is-3">
-                  <div class="container">
-                    <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                  <div class="column is-7">
+                    <span class="subtitle">Fatkul Nur Koirudin</span>
+                    <br><span>Tinggal di Lamongan</span>
+                  </div>
+                  <div class="column is-3">
+                    <div class="container">
+                      <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <hr>
-            <h1>KETIKA TAB TEMAN DI KLIK MUNCUL SEPERTI DIBAWAH INI</h1>
-            <br>
-            <div class="box">
-              <div class="columns">
-                <div class="column is-2 has-text-centered is-horizontal-center">
-                  <div class='is-flex is-horizontal-center'>
-                    <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                    </figure>
+              <div class="box">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered is-horizontal-center">
+                    <div class='is-flex is-horizontal-center'>
+                      <figure class="image is-64x64 has-text-centered">
+                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <span class="subtitle">Fatkul Nur Koirudin</span>
+                    <br><span>Tinggal di Lamongan</span>
+                  </div>
+                  <div class="column is-3">
+                    <div class="container">
+                      <button class="button is-rounded is-small is-primary">Tambah Teman</button>
+                    </div>
                   </div>
                 </div>
-                <div class="column is-7">
-                  <span class="subtitle">Fatkul Nur Koirudin</span>
-                  <br><span>Tinggal di Lamongan</span>
-                </div>
-                <div class="column is-3">
-                  <div class="container">
-                    <button class="button is-rounded is-small is-outlined is-primary">Lihat Investasi</button>
+              </div>
+
+            </div>
+            <div v-if="isActive == false">
+              <div class="box">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered is-horizontal-center">
+                    <div class='is-flex is-horizontal-center'>
+                      <figure class="image is-64x64 has-text-centered">
+                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <span class="subtitle">Fatkul Nur Koirudin</span>
+                    <br><span>Tinggal di Lamongan</span>
+                  </div>
+                  <div class="column is-3">
+                    <div class="container">
+                      <button class="button is-rounded is-small is-outlined is-primary">Lihat Investasi</button>
+                    </div>
                   </div>
                 </div>
               </div>

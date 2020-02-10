@@ -73,6 +73,7 @@
                             <li><a href="/tentang-kami">Tentang Kami</a></li>
                             <li><a href="/produk">Produk</a></li>
                             <li><a href="/tim-kami">Tim Kami</a></li>
+                            <li><a href="/simulasi-atm">Simulasi ATM</a></li>
                         </ul>
                     </div>
                     <div class="column is-2">
