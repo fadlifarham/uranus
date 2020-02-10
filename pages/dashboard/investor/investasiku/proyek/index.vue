@@ -97,3 +97,26 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            
+        }
+    },
+
+    mounted() {
+        this.getAllMyProyek()
+    },
+
+    methods: {
+        getAllMyProyek() {
+            this.$axios.get("core/projects/my/").then(response => {
+                console.log(response.data.results);
+                this.myInvestProjects = response.data.results;
+            });
+        }
+    },
+}
+</script>

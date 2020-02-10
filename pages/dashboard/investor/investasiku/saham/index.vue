@@ -29,7 +29,7 @@
                                           <select>
                                             <option selected>Kategori</option>
                                               
-																						<option v-for="item in 10" :key="item">Select dropdown</option>
+                                            <option v-for="item in 10" :key="item">Select dropdown</option>
                                               
                                           </select>
                                     </span>
@@ -65,21 +65,21 @@
                 <div class="column is-9">
                     <div class="">
                         
-                            <div v-for="item in 5" :key="item" class="box">
+                            <div v-for="item in companies" :key="item.id" class="box">
                                 <div class="media">
                                     <div class="media-left">
                                         <figure class="image is-64x64">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                            <img :src="item.image" alt="Image">
                                         </figure>
                                     </div>
                                     <div class="media-content">
                                         <div class="content">
                                             <p>
-                                                <a :href="'/dashboard/investasiku/saham/' + item" class="has-text-weight-bold has-text-black">Soto Lamongan Cak Mamet</a>
+                                                <a :href="'/dashboard/investor/investasiku/saham/' + item.id" class="has-text-weight-bold has-text-black">{{ item.name }}</a>
                                                 <br>
-                                                Dibutuhkan Rp 512.000.000 - Imbal Balik 2%
+                                                {{ item.description }}
                                                 <br>
-                                                <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span>
+                                                <!-- <span class="has-text-weight-light">{{ item.name }} - Sampai 23 Juni 2019</span> -->
                                             </p>
                                         </div>
                                     </div>
@@ -99,3 +99,26 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            companies: []
+        }
+    },
+
+    mounted() {
+        this.getSahamku()
+    },
+
+    methods: {
+        getSahamku() {
+            this.$axios.get('/core/companies/my/').then(response => {
+                console.log(response.data.results)
+                this.companies = response.data.results
+            })
+        }
+    },
+}
+</script>
