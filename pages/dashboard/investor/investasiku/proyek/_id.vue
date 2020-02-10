@@ -2,7 +2,7 @@
 	<div>
 		<div class="hero is-white">
         <div class="hero-body has-text-centered">
-            <p class="title is-3 has-text-primary">Expansi Kilang Minyak di Tuban</p>
+            <p class="title is-3 has-text-primary">{{ project_name }}</p>
         </div>
     </div>
     <div class="section">
@@ -12,15 +12,16 @@
                     <div class="box">
                         <div class="field">
                             <div class='is-flex is-horizontal-center'>
-                                <figure class="image is-128x128 has-text-centered">
-                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>
+                                <img style="height: 128px; max-width: 100%;" class="is-rounded" :src="project.image">
+                                <!-- <figure class="image is-128x128 has-text-centered">
+                                    
+                                </figure> -->
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Nama Bisnis</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="text" value="PT. Exatera Mega Sentosa" disabled>
+                                <input v-model="company_name" class="input" type="text" value="PT. Exatera Mega Sentosa" disabled>
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-alt"></i>
                                 </span>
@@ -29,7 +30,7 @@
                         <div class="field">
                             <label class="label">Kategori Bisnis</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Text input" value="F&B" disabled>
+                                <input class="input" type="text" placeholder="Text input" value="Umum" disabled>
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-alt"></i>
                                 </span>
@@ -37,13 +38,13 @@
                         </div>
                         <div class="field">
                             <label class="label">Alamat Bisnis</label>
-                            <textarea class="textarea"></textarea>
+                            <textarea v-model="company_address" class="textarea" disabled></textarea>
                         </div>
                         <div class="field">
                             <label class="label">Prospektus Bisnis</label>
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    <a href="" class="button is-primary is-fullwidth is-outlined">Download
+                                    <a :href="company_prospectus" target="_blank" class="button is-primary is-fullwidth is-outlined">Download
                                         Prospektus</a>
                                     <span class="icon is-small is-left">
                                         <i class="far fa-file-word"></i>
@@ -81,14 +82,7 @@
                                 <div class="content">
                                     <p>
                                         <strong>Deskripsi Proyek</strong><br>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book. It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                                        with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                        recently with desktop publishing software like Aldus PageMaker including
-                                        versions of Lorem Ipsum.
+                                        {{ project.description }}
                                     </p>
                                 </div>
                             </div>
@@ -226,3 +220,39 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            project: {},
+            project_name: "",
+
+            company: {},
+            company_name: "",
+            company_address: "",
+            company_prospectus: ""
+        }
+    },
+
+    mounted() {
+        this.getProjectInfo()
+        console.log("jalan")
+    },
+
+    methods: {
+        getProjectInfo() {
+            this.$axios.get('core/projects/' + this.$route.params.id + '/?expand=company.owners').then(response => {
+                this.project = response.data
+                this.project_name = response.data.name
+
+                this.company_name = response.data.company.name
+                this.company_address = response.data.company.address
+                this.company_prospectus = response.data.company.prospectus
+
+                this.company = response.data.company
+            })
+        },
+    },
+}
+</script>

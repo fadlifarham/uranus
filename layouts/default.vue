@@ -21,7 +21,7 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end" v-if="this.user.role !== 'IV'">
+          <div class="navbar-end" v-if="this.user.role === 'IV'">
             <a class="navbar-item" href="/dashboard">
               Dashboard
             </a>

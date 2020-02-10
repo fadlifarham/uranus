@@ -127,7 +127,7 @@
                                             <div class="field">
                                                 <label>Jumlah Uang</label>
                                                 <p class="control has-icons-left">
-                                                    <input class="input" type="number" placeholder="Dalam Rupiah">
+                                                    <input v-model="sumInvest" class="input" type="number" placeholder="Dalam Rupiah">
                                                     <span class="icon is-small is-left">
                                   <i class="fas fa-money-bill"></i>
                                 </span>
@@ -153,7 +153,7 @@
 
                                     <div class="field">
                                         <div class="control">
-                                            <a href="" class="button is-primary is-fullwidth">Mulai Investasi</a>
+                                            <a @click="submitInvest" class="button is-primary is-fullwidth">Mulai Investasi</a>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +246,9 @@ export default {
             project_name        : "",
             company_address     : "",
             funded              : "",
-            target              : ""
+            target              : "",
+
+            sumInvest: ""
         }
     },
     mounted() {
@@ -273,7 +275,17 @@ export default {
                 this.funded = response.data.funded
                 this.target = response.data.target
             });
-      },
+        },
+
+        submitInvest() {
+            let id = this.$route.params.id
+            this.$axios.post('core/projects/' + id + '/invest/', {
+                amount: this.sumInvest
+            }).then(response => {
+                this.$router.go()
+                console.log(response)
+            })
+        }
     },
 }
 </script>
