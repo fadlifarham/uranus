@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="field is-grouped">
-                            <button @click="login" class="button is-primary is-fullwidth">Masuk</button>
+                            <button @click.prevent="login" class="button is-primary is-fullwidth">Masuk</button>
                         </div>
 
                         <div class="has-text-centered">
@@ -79,9 +79,9 @@ export default {
       password: "investor123",
   }),
   mounted() {
-      if (this.$auth.loggedIn) {
-          this.$router.push('/dashboard')
-      }
+    //   if (this.$auth.loggedIn) {
+    //       this.$router.push('/dashboard')
+    //   }
   },
   methods: {
       login() {
@@ -91,17 +91,16 @@ export default {
             password: this.password
           }
         }).then(response => {
-            this.$axios.get('/lib/rest-auth/user').then(response => {
-                if (response.data.role == "IV") {
-                  this.$router.push('dashboard/investor')
-                } else {
-                  this.$router.push('dashboard/company')
-                }
-            })
+            console.log(this.$auth.user)
+            // if (this.$auth.user.role == "IV") {
+            //     this.$router.push('dashboard/investor')
+            // } else {
+            //     this.$router.push('dashboard/company')
+            // }
             // console.log("jalan");
             // this.$router.push('/dashboard')
         }).catch(error => {
-            alert(error)
+            window.alert(error)
             console.log(error)
         })
       }

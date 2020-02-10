@@ -91,13 +91,6 @@ export default {
 
   // Auth
   auth: {
-    redirect: {
-      login: '/login',
-      logout: '/',
-      callback: 'login',
-      home: '/dashboard'
-    },
-
     strategies: {
       local: {
         endpoints: {
@@ -107,6 +100,13 @@ export default {
         },
         tokenType: "Token"
       }
+    },
+
+    redirect: {
+      login: '/login',
+      logout: '/',
+      // callback: 'login',
+      home: '/dashboard'
     }
   },
 
