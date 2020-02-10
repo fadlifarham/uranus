@@ -91,15 +91,15 @@ export default {
             password: this.password
           }
         }).then(response => {
-            // this.$axios.get('/lib/rest-auth/user').then(response => {
-            //     // if (response.data.role == "IV") {
-            //     //   this.$router.push('dashboard/investor')
-            //     // } else {
-            //     //   this.$router.push('dashboard/company')
-            //     // }
-            // })
-            console.log("jalan");
-            this.$router.push('/dashboard')
+            this.$axios.get('/lib/rest-auth/user').then(response => {
+                if (response.data.role == "IV") {
+                  this.$router.push('dashboard/investor')
+                } else {
+                  this.$router.push('dashboard/company')
+                }
+            })
+            // console.log("jalan");
+            // this.$router.push('/dashboard')
         })
       }
     }
