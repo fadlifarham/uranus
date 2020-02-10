@@ -76,38 +76,42 @@
                   </div>
                   <div class="column is-3">
                     <div class="container">
-                      <button class="button is-rounded is-small is-outlined is-primary" v-on:click="showUserInvestment(user.id)">Lihat Investasi</button>
+                      <button class="button is-rounded is-small is-outlined is-primary" v-on:click="showUserInvestment(user)">Lihat Investasi</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <hr>
             <div v-if="showInvestment">
-<!--              <div class="box">-->
-<!--                <div class="columns">-->
-<!--                  <div class="column is-2 has-text-centered is-horizontal-center">-->
-<!--                    <div class='is-flex is-horizontal-center'>-->
-<!--                      <figure class="image is-64x64 has-text-centered">-->
-<!--                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">-->
-<!--                      </figure>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="column is-10">-->
-<!--                    <span class="subtitle">Fatkul Nur Koirudin</span>-->
-<!--                    <br><span>Tinggal di Lamongan</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="box">-->
-<!--                <h2 class="subtitle">Informasi Investasi Terbaru</h2>-->
-<!--                <table class="table is-bordered is-fullwidth">-->
-<!--                  <thead>-->
-<!--                  <th>No</th>-->
-<!--                  <th>Judul Investasi</th>-->
-<!--                  <th>Jenis Investasi</th>-->
-<!--                  <th>Tanggal</th>-->
-<!--                  </thead>-->
-<!--                  <tbody>-->
+              <div class="box">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered is-horizontal-center">
+                    <div class='is-flex is-horizontal-center'>
+                      <figure class="image is-64x64 has-text-centered">
+                        <img class="is-rounded" :src="userSingle.image ? userSingle.image : 'https://bulma.io/images/placeholders/128x128.png'">
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="column is-10">
+                    <span class="subtitle">{{ userSingle.firstName + " " + userSingle.lastName }} </span>
+                    <br><span>@{{ userSingle.username }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="box">
+                <h2 class="subtitle">Informasi Investasi Terbaru</h2>
+                <table class="table is-bordered is-fullwidth">
+                  <thead>
+                  <th>No</th>
+                  <th>Judul Investasi</th>
+                  <th>Jenis Investasi</th>
+                  <th>Tanggal</th>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td colspan="4">tidak ada data</td>
+                  </tr>
 <!--                  <tr>-->
 <!--                    <td>1</td>-->
 <!--                    <td>Pembukaan Soto Ayam</td>-->
@@ -120,9 +124,9 @@
 <!--                    <td>Saham</td>-->
 <!--                    <td>01 Maret 2018</td>-->
 <!--                  </tr>-->
-<!--                  </tbody>-->
-<!--                </table>-->
-<!--              </div>-->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -141,7 +145,8 @@
         users: [],
         userFriends: [],
         searchQuery: '',
-        showInvestment: false
+        showInvestment: false,
+        userSingle: ''
       }
     },
     mounted() {
@@ -183,8 +188,12 @@
           this.getUserFriends();
         })
       },
-      showUserInvestment(idUser) {
+      showUserInvestment(user) {
         this.showInvestment = true;
+        this.getUserProfileDetail(user)
+      },
+      getUserProfileDetail(user) {
+        this.userSingle = user;
       }
     },
   }
