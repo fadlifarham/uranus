@@ -59,7 +59,7 @@
                     <div class="column is-3">
                         <h4 class="title is-3 is-bold has-text-primary">Uranus</h4>
                         <p class="footer-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices in risus sed fermentum.
+                          Uranus adalah platform penggalangan dana berbasis equity atau kepemilikan saham.
                         </p>
                         <div class="socials">
                             <a><i class="fab fa-instagram"></i></a>
@@ -71,21 +71,22 @@
                     <div class="column is-2 is-offset-1">
                         <ul class="footer-menu">
                             <li><a href="">Tentang Kami</a></li>
-                            <li><a href="">Produk</a></li>
+                            <li><a href="/produk">Produk</a></li>
                             <li><a href="">Tim Kami</a></li>
-                            <li><a href="">Hubungi Kami</a></li>
                         </ul>
                     </div>
                     <div class="column is-2">
                         <ul class="footer-menu">
-                            <li><a href="">Syarat dan Ketentuan</a></li>
-                            <li><a href="">Kebijakan Privasi</a></li>
+                            <li><a href="/tos">Syarat dan Ketentuan</a></li>
+                            <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
                         </ul>
                     </div>
                     <div class="column is-5">
                         <h4 class="title is-5 has-text-weight-bold has-text-white">Unduh</h4>
                         <div class="columns">
-                            <div class="column is-6"><i class="fab fa-google-play"></i></div>
+                            <div class="column is-6">
+                              <a href="https://imgbb.com/"><img src="https://i.ibb.co/nMQvHR6/603e52db090253e5e84d75668ef9c6c3.png" alt="603e52db090253e5e84d75668ef9c6c3" border="0"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,7 +99,7 @@
                 </div>
             </div>
         </footer>
-        
+
         <div id="backtotop"><a><i class="fas fa-angle-up"></i></a></div>
     </div>
 </template>
