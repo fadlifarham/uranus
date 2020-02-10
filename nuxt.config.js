@@ -64,14 +64,23 @@ export default {
     '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    ['vue-currency-filter/nuxt', {
+      symbol: 'Rp',
+      thousandsSeparator: '.',
+      fractionCount: 2,
+      fractionSeparator: ',',
+      symbolPosition: 'front',
+      symbolSpacing: true
+    }],
+    
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: "https://uranus.hackathon.reyvel.id/api/",
+    baseURL: "https://api.dibumi.com/api/",
     credentials: false
   },
 

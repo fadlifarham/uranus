@@ -65,7 +65,7 @@
                 <div class="column is-6">
                     <div class="">
                         
-                            <div v-for="item in 10" :key="item" class="box">
+                            <div v-for="item in proyeks" :key="item.id" class="box">
                                 <div class="media">
                                     <div class="media-left">
                                         <figure class="image is-64x64">
@@ -75,9 +75,13 @@
                                     <div class="media-content">
                                         <div class="content">
                                             <p>
-                                                <a :href="'/dashboard/proyek/' + item" class="has-text-weight-bold has-text-black">Expansi Kilang Minyak di Tuban</a>
+                                                <a :href="'/dashboard/proyek/' + item.id" class="has-text-weight-bold has-text-black">
+                                                    {{ item.name }}
+                                                </a>
+
                                                 <br>
-                                                Dibutuhkan Rp 1.912.000.000 - Imbal Balik 2%
+
+                                                Dibutuhkan {{ item.target | currency }} - <span class="has-text-danger">Imbal Balik 2% </span>
                                                 <br>
                                                 <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span>
                                             </p>
@@ -105,3 +109,26 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            proyeks: []
+        }
+    },
+
+    mounted() {
+        this.getAllProyek()
+    },
+
+    methods: {
+        getAllProyek() {
+            this.$axios.get('/core/projects/?expand=company&ordering=-created_at').then( response => {
+                this.proyeks = response.data.results
+                console.log(this.proyeks)
+            })
+        }
+    },
+}
+</script>
