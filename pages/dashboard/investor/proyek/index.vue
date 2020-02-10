@@ -75,7 +75,7 @@
                                     <div class="media-content">
                                         <div class="content">
                                             <p>
-                                                <a :href="'/dashboard/proyek/' + item.id" class="has-text-weight-bold has-text-black">
+                                                <a :href="'/dashboard/investor/proyek/' + item.id" class="has-text-weight-bold has-text-black">
                                                     {{ item.name }}
                                                 </a>
 
@@ -83,7 +83,7 @@
 
                                                 Dibutuhkan {{ item.target | currency }} - <span class="has-text-danger">Imbal Balik 2% </span>
                                                 <br>
-                                                <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span>
+                                                <span class="has-text-weight-light">{{ item.company.name }} - Sampai {{ $moment(item.createdAt).add(2, 'M').format('DD MMMM YYYY') }}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
 
                         <div class="field">
                             <div class="control">
-                                <a href="/dashboard/proyek" class="button is-primary is-fullwidth">Selanjutnya</a>
+                                <a href="/dashboard/investor/proyek" class="button is-primary is-fullwidth">Selanjutnya</a>
                             </div>
                         </div>
                     </div>
