@@ -48,8 +48,8 @@
 </template>
 
 <script>
-export default {
-  auth: false,
-  layout: 'landing'
-}
+  export default {
+    auth: false,
+    layout: 'landing'
+  }
 </script>
