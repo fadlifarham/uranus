@@ -118,22 +118,11 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary is-fullwidth" id="showModal">Investasi Sekarang</button>
+                            <button class="button is-primary is-fullwidth" v-on:click="modalFormInvestasi = true">Investasi Sekarang</button>
                         </div>
                     </div>
 
-                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-
-                    <script>
-                        $("#showModal").click(function() {
-                            $(".modal").addClass("is-active");
-                        });
-                        $("#closeModal").click(function() {
-                            $(".modal").removeClass("is-active");
-                        });
-                    </script>
-
-                    <div class="modal">
+                    <div v-if="modalFormInvestasi" class="modal is-active">
                         <div class="modal-background"></div>
                         <div class="modal-card">
                             <section class="modal-card-body">
@@ -176,6 +165,7 @@
                                 </div>
                             </section>
                         </div>
+                        <button v-on:click="modalFormInvestasi = false" class="modal-close is-large" aria-label="close"></button>
                     </div>
 
                     <hr>
@@ -245,3 +235,16 @@
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            modalFormInvestasi: false
+        }
+    },
+    mounted() {
+        console.log(this.modalFormInvestasi)
+    }
+}
+</script>

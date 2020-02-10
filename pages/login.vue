@@ -29,15 +29,15 @@
                     <form class="" method="post" action="">
                         <div class="section is-paddingless-horizontal is-paddingless-top">
                             <div class="field">
-                                <label class="label">Email address</label>
+                                <label class="label">Username</label>
                                 <div class="control">
-                                    <input class="input" type="email" placeholder="email@example.com">
+                                    <input v-model="username" class="input" type="text" placeholder="Masukkan username anda">
                                 </div>
                             </div>
 
                             <div class="field">
                                 <label class="label">Password</label>
-                                <input class="input" type="password">
+                                <input v-model="password" class="input" type="password" placeholder="Masukkan password anda">
                             </div>
 
                             <div class="field">
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="field is-grouped">
-                            <button class="button is-primary is-fullwidth">Masuk</button>
+                            <button @click="login" class="button is-primary is-fullwidth">Masuk</button>
                         </div>
 
                         <div class="has-text-centered">
@@ -80,7 +80,36 @@ export default {
 
     ]
   },
-  layout: 'clean'
+  layout: 'clean',
+  data: () => ({
+      username: "rudi",
+      password: "investor123",
+  }),
+  mounted() {
+      if (this.$auth.loggedIn) {
+          this.$router.push('/dashboard')
+      }
+  },
+  methods: {
+      login() {
+        this.$auth.loginWith('local', {
+          data: {
+            username: this.username,
+            password: this.password
+          }
+        }).then(response => {
+            // this.$axios.get('/lib/rest-auth/user').then(response => {
+            //     // if (response.data.role == "IV") {
+            //     //   this.$router.push('dashboard/investor')
+            //     // } else {
+            //     //   this.$router.push('dashboard/company')
+            //     // }
+            // })
+            console.log("jalan");
+            this.$router.push('/dashboard')
+        })
+      }
+    }
 }
 </script>
 

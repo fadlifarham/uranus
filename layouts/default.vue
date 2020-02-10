@@ -25,20 +25,40 @@
             <a class="navbar-item" href="/dashboard">
               Dashboard
             </a>
+            <!-- <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                  User Bisnis
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                    Semua Proyek Saya
+                </a>
+                <a class="navbar-item">
+                    Buat Proyek Baru
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                    Semua Pendanaan UKM
+                </a>
+                <a class="navbar-item">
+                    Pendanaan UKM
+                </a>
+              </div>
+            </div> -->
 
-            <a class="navbar-item" href="/dashboard/investasiku/proyek">
+            <a class="navbar-item" href="/dashboard/investor/investasiku/proyek">
               Proyek Investasiku
             </a>
-            <a class="navbar-item" href="/dashboard/investasiku/saham">
+            <a class="navbar-item" href="/dashboard/investor/investasiku/saham">
               Saham Investasiku
             </a>
-            <a class="navbar-item" href="/dashboard/proyek">
+            <a class="navbar-item" href="/dashboard/investor/proyek">
               List Proyek
             </a>
-            <a class="navbar-item" href="/dashboard/saham">
+            <a class="navbar-item" href="/dashboard/investor/saham">
               List Saham
             </a>
-            <a class="navbar-item" href="/dashboard/laporan">
+            <a class="navbar-item" href="/dashboard/investor/laporan">
               Laporan
             </a>
             <div class="navbar-item">
@@ -49,6 +69,11 @@
                 <span>Profile</span>
               </a>
             </div>
+
+            <a class="navbar-item" @click="logout">
+              Logout
+            </a>
+
           </div>
         </div>
       </div>
@@ -63,3 +88,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$auth.logout()
+    }
+  }
+}
+</script>

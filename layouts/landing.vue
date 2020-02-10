@@ -16,14 +16,8 @@
                 </div>
 
                 <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item" href="/">
-                            Home
-                        </a>
-                    </div>
-
                     <div class="navbar-end">
-                        <a class="navbar-item" href="/">
+                        <a class="navbar-item" href="/produk">
                             Produk
                         </a>
                         <a class="navbar-item" href="/">
@@ -35,17 +29,17 @@
                         <a class="navbar-item" href="/">
                             Tentang Kami
                         </a>
-                        <div class="navbar-item">
-                            <a href="/" class="button is-primary is-inverted is-rounded">
+                        <div v-if="!this.$auth.loggedIn" class="navbar-item">
+                            <a href="/login" class="button is-primary is-inverted is-rounded">
                                 Masuk
                             </a>
                         </div>
-                        <div class="navbar-item">
-                            <a href="/" class="button is-primary is-outlined is-rounded">
+                        <div v-if="!this.$auth.loggedIn" class="navbar-item">
+                            <a href="/register" class="button is-primary is-outlined is-rounded">
                                 Daftar
                             </a>
                         </div>
-                        <div class="navbar-item">
+                        <div v-if="this.$auth.loggedIn" class="navbar-item">
                             <a href="/dashboard" class="button is-primary is-rounded">
                                 Dashboard
                             </a>
@@ -54,6 +48,8 @@
                 </div>
             </div>
         </div>
+
+        <div v-if="this.$route.path != '/'" style="padding-top: 110px"></div>
 
         <nuxt/>
 
@@ -66,10 +62,10 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices in risus sed fermentum.
                         </p>
                         <div class="socials">
-                            <a><i class="fa fa-instagram"></i></a>
-                            <a><i class="fa fa-facebook"></i></a>
-                            <a><i class="fa fa-pinterest"></i></a>
-                            <a><i class="fa fa-medium"></i></a>
+                            <a><i class="fab fa-instagram"></i></a>
+                            <a><i class="fab fa-facebook"></i></a>
+                            <a><i class="fab fa-pinterest"></i></a>
+                            <a><i class="fab fa-medium"></i></a>
                         </div>
                     </div>
                     <div class="column is-2 is-offset-1">
@@ -103,7 +99,12 @@
             </div>
         </footer>
         
-        <div id="backtotop"><a></a></div>
+        <div id="backtotop"><a><i class="fas fa-angle-up"></i></a></div>
     </div>
 </template>
 
+<script>
+export default {
+
+}
+</script>
