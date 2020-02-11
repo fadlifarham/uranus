@@ -2,7 +2,7 @@
 	<div>
 		<div class="hero is-white">
         <div class="hero-body has-text-centered">
-            <p class="title is-3 has-text-primary">Soto Lamongan Cak Mamet</p>
+            <p class="title is-3 has-text-primary">{{ company.name }}</p>
         </div>
     </div>
     <div class="section">
@@ -12,15 +12,16 @@
                     <div class="box">
                         <div class="field">
                             <div class='is-flex is-horizontal-center'>
-                                <figure class="image is-128x128 has-text-centered">
-                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>
+                                <img style="height: 128px; max-width: 100%;" class="is-rounded" :src="company.image">
+                                <!-- <figure class="image is-128x128 has-text-centered">
+                                    <img class="is-rounded" :src="company.image">
+                                </figure> -->
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Nama Bisnis</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Text input" disabled>
+                                <input v-model="company.name" class="input" type="text" placeholder="Text input" disabled>
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-alt"></i>
                                 </span>
@@ -29,7 +30,7 @@
                         <div class="field">
                             <label class="label">Kategori Bisnis</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Text input" value="F&B" disabled>
+                                <input class="input" type="text" placeholder="Text input" value="Umum" disabled>
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-alt"></i>
                                 </span>
@@ -37,13 +38,13 @@
                         </div>
                         <div class="field">
                             <label class="label">Alamat Bisnis</label>
-                            <textarea class="textarea"></textarea>
+                            <textarea v-model="company.address" class="textarea" disabled></textarea>
                         </div>
                         <div class="field">
                             <label class="label">Prospektus Bisnis</label>
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    <a href="" class="button is-primary is-fullwidth is-outlined">Download Prospektus</a>
+                                    <a :href="company.prospectus" target="_blank" class="button is-primary is-fullwidth is-outlined">Download Prospektus</a>
                                     <span class="icon is-small is-left">
                                         <i class="far fa-file-word"></i>
                                     </span>
@@ -70,7 +71,7 @@
                                 <div class="content">
                                     <p>
                                         <strong>Deskripsi Bisnis</strong><br>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        {{ company.description }}
                                     </p>
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
                             <div class="column is-6">
                                 <p>
                                     Jumlah Lembar Saham<br>
-                                    <strong>100 Lembar</strong>
+                                    <strong>{{ company.nShares }} Lembar</strong>
                                 </p><br>
                             </div>
                             <div class="column is-6">
@@ -125,10 +126,10 @@
                     <div class="box">
                         <p>
                             <strong>Dana Terkumpul</strong><br>
-                            Rp 500.000.000,00 (<span class="has-text-danger">500 Lembar Saham Tersedia</span>)<br>
+                            {{ company.sharePrice | currency }} (<span class="has-text-danger">{{ company.nShares }} Lembar Saham Tersedia</span>)<br>
                             <progress class="progress is-success" value="50" max="100">50%</progress>
                         </p> <br>
-                        <div class="columns">
+                        <!-- <div class="columns">
                             <div class="column is-6">
                                 <p>
                                     <strong>Dana yang dibutuhkan</strong><br>
@@ -157,7 +158,7 @@
                                     65
                                 </p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <hr>
                     <p class="subtitle">Pemilik Bisnis</p>
@@ -165,13 +166,13 @@
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                    <img :src="owner.image" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>Angela Fitriana</strong>
+                                        <strong>{{ owner.firstName }} {{ owner.lastName }}</strong>
                                         <br>
                                         saya merupakan lulusan dari Fakultas Ekonomi Universitas Indonesia dan telah berpengalaman sebagai GM keuangan salah satu perusahaan konstruksi. Beliau memiliki andil besar dalam jalannya operasional perusahaan baik dari sisi operasional terkait supply bahan baku, pemenuhan kebutuhan customer dan memperluas jaringan bisnis.
                                         </p>
@@ -181,14 +182,41 @@
                     </div>
 
                     <hr>
-                    <p class="subtitle">Kegiatan Perusahaan</p>
+                    <!-- <p class="subtitle">Kegiatan Perusahaan</p>
                     <div class="box has-text-centered">
                         <img src="https://api.bizhare.id/base/commonFile/getFile?fileName=a219b00a9332403e9d124a4a84fe8d01.png">
                         <img src="https://api.bizhare.id/base/commonFile/getFile?fileName=9f9064e5a82f4e57b6f4f0f89e25271b.png">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 	</div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            company: {},
+            owner: {},
+        }
+    },
+
+    mounted() {
+        this.getCompany()
+    },
+
+    methods: {
+        getCompany() {
+            let id = this.$route.params.id
+            this.$axios.get('core/companies/' + id + '?expand=owners').then(response => {
+                this.company = response.data
+                this.owner = response.data.owners[0]
+
+                console.log(response.data)
+            })
+        },
+    },
+}
+</script>

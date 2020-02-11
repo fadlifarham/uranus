@@ -65,7 +65,7 @@
             </div>
             <div class="column is-9">
               <div class="">
-                <a v-for="item in 10" :key="item.id" :href="'/dashboard/company/proyek/' + item" class="box" >
+                <a v-for="item in projects" :key="item.id" :href="'/dashboard/company/saham/' + id_company + '/proyek/' + item.id" class="box" >
                   <div class="media">
                     <div class="media-left">
                       <figure class="image is-64x64">
@@ -75,11 +75,11 @@
                     <div class="media-content">
                       <div class="content">
                         <p>
-                          <a class="has-text-weight-bold has-text-black">Expansi Kilang Minyak di Tuban</a>
+                          <a class="has-text-weight-bold has-text-black">{{ item.name }}</a>
                           <br>
-                          Dibutuhkan Rp 1.912.000.000 - Imbal Balik 2%
+                          Dibutuhkan {{ item.target | currency }} - Imbal Balik 2%
                           <br>
-                          <span class="has-text-weight-light">PT. Exatera Mega Sentosa - Sampai 23 Juni 2019</span>
+                          <span class="has-text-weight-light">{{ item.company.name }} - {{ $moment(item.createdAt).add(2, 'M').format('DD MMMM YYYY') }}</span>
                         </p>
                       </div>
                     </div>
@@ -105,7 +105,8 @@
 
         data() {
           return {
-            
+            id_company: "",
+            projects: []
           }
         },
 
@@ -115,8 +116,11 @@
 
         methods: {
           getAllMyProject() {
-            this.$axios.get('/core/projects/my').then(response => {
-              console.log("All My Project : ", response.data)
+            let id = this.$route.params.idCompany
+            this.id_company = this.$route.params.idCompany
+            this.$axios.get('/core/projects/?company=' + id + '&expand=company').then(response => {
+              console.log(response.data.results)
+              this.projects = response.data.results
             })
           }
         },

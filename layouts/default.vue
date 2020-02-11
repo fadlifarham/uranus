@@ -61,9 +61,9 @@
             <a class="navbar-item" href="/dashboard/company">
               Dashboard
             </a>
-            <a class="navbar-item" href="/dashboard/company/proyek">
+            <!-- <a class="navbar-item" href="/dashboard/company/proyek">
               Semua Proyek Saya
-            </a>
+            </a> -->
 
             <a class="navbar-item" href="/dashboard/company/proyek/create">
               Buat Proyek Baru

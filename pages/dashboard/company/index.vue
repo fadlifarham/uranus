@@ -10,17 +10,17 @@
                 <div class="column is-2 has-text-centered is-horizontal-center">
                   <div class='is-flex is-horizontal-center'>
                     <figure class="image is-64x64 has-text-centered">
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                      <img class="is-rounded" :src="user.image">
                     </figure>
                   </div>
                 </div>
                 <div class="column is-10">
                   <p class="subtitle">
-                    Halo, Fatkul Nur Koirudin
+                    Halo, {{ user.firstName }} {{ user.lastName }}
                   </p>
                   <p>Saldo Anda</p>
                   <p class="subtitle">
-                    Rp 8.032.032
+                    {{ user.balance | currency }}
                   </p>
                 </div>
               </div>
@@ -279,3 +279,21 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            user: {}    
+        }
+    },
+
+    mounted() {
+        this.user = this.$auth.user
+    },
+
+    methods: {
+        
+    },
+}
+</script>

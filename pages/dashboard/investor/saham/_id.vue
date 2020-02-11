@@ -306,7 +306,7 @@ export default {
             this.$axios.post('core/companies/' + id + '/invest/', {
                 amount: this.sumInvest
             }).then(response => {
-                // this.$router.go()
+                this.$router.go()
                 console.log(response)
             })
         }
