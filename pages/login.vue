@@ -92,11 +92,11 @@ export default {
           }
         }).then(response => {
             console.log(this.$auth.user)
-            // if (this.$auth.user.role == "IV") {
-            //     this.$router.push('dashboard/investor')
-            // } else {
-            //     this.$router.push('dashboard/company')
-            // }
+            if (this.$auth.user.role == "IV") {
+                this.$router.push('dashboard/investor')
+            } else {
+                this.$router.push('dashboard/company')
+            }
             // console.log("jalan");
             // this.$router.push('/dashboard')
         }).catch(error => {
